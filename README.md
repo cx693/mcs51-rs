@@ -1,5 +1,7 @@
 # mcs51-rs — 完全用 Rust 实现的 8051 裸机工具链
 
+**简体中文** | [English](README.en.md)
+
 `mcs51-rs` 是一套**完全用 Rust 编写**的 Intel MCS-51（8051）工具链。
 它把 SDCC 工具链里跟 8051 后端相关的部分（汇编器 `sdas8051`、链接器 `sdld`、
 `packihx`/`makebin`、`ucsim`）用 Rust 重写，再加上一个芯片标准库、
@@ -10,6 +12,8 @@
 
 **零外部依赖**：不需要 SDCC、不需要厂商汇编器、不需要硬件。汇编 → 链接 → Intel HEX →
 在模拟器里跑起来验证，整条链路都在一个 `cargo test` 里闭环。
+
+> 🎬 **视频讲解**：[【在Rust上开发8051单片机的模版！】](https://www.bilibili.com/video/BV1GPpT6PEFP/?share_source=copy_web&vd_source=cd84a64418dd304d8fed74a9172a37da)（B 站）
 
 ```
 $ mcs51 new blink && cd blink
