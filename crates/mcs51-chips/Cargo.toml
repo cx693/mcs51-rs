@@ -1,0 +1,12 @@
+[package]
+name = "mcs51-chips"
+description = "8051 芯片标准库：SFR 与位定义（Keil reg52.h / STC 头文件的 Rust 版）"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+# 刻意零依赖：芯片定义是纯数据，汇编器、eDSL、模拟器、文档工具都能直接用。
+[dependencies]

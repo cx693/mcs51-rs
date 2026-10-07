@@ -1,0 +1,16 @@
+[package]
+name = "mcs51-asm"
+description = "Relocatable 8051 assembler (the sdas8051 of the mcs51-rs toolchain)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-chips = { workspace = true }
+
+[dev-dependencies]
+i8051 = { workspace = true }

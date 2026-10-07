@@ -1,0 +1,32 @@
+# ===========================================================================
+#  mcs51-rs 工程配置 —— blink（Rust 版，用 HAL 写外设）
+#
+#  构建： mcs51 build examples/blink-rs
+#  下载： mcs51 flash examples/blink-rs -p /dev/ttyUSB0 -r dtr
+# ===========================================================================
+
+[project]
+name = "blink-rs"
+device = "AT89C51 / STC89C52RC"
+description = "翻 P1.0 + 轮询串口报数，用 HAL 写外设（Rust）"
+
+[build]
+language = "rust"
+rust_bin = ""
+out = "build"
+listing = true
+map = true
+
+[sim]
+instructions = 400000
+# 和 src/lib.rs 的 CPU_HZ 保持一致。
+cpu_hz = 11059200
+uart_baud = 9600
+
+[flash]
+protocol = "stc89"
+baud = 115200
+handshake_baud = 2400
+reset = "manual"
+flash_size = 8192
+write_options = true

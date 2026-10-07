@@ -1,0 +1,18 @@
+# mcs51-rs 裸机示例：翻转一个引脚 + 串口报数
+[project]
+name = "blink"
+device = "8051 / AT89C51"
+description = "bare-metal blink plus a polled UART console"
+
+[build]
+sources = ["src/main.asm"]
+out = "build"
+listing = true
+map = true
+
+[sim]
+instructions = 400000
+# 模拟器按这个频率算机器周期和串口位宽。11.0592MHz 是 8051 的标准晶振：
+# 它让 9600 波特率精确整除，12MHz 下 9600 只能到 10417（+8.5%）。
+cpu_hz = 11059200
+uart_baud = 9600

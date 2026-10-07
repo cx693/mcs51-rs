@@ -1,0 +1,26 @@
+[package]
+name = "mcs51-flash"
+description = "Download firmware to real 8051 hardware: STC ISP bootloader protocol and a self-hosted ISP"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[features]
+default = ["serial"]
+# Real serial-port support. Turn it off to build the protocol layer alone
+# (useful on hosts without a serial stack, and for the simulated transports).
+serial = ["dep:serialport"]
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-ihex = { workspace = true }
+mcs51-sim = { workspace = true }
+serialport = { version = "4.7", optional = true }
+
+[dev-dependencies]
+# 下载测试要自己拼一份"真实固件"，所以需要组装和链接。
+mcs51-asm = { workspace = true }
+mcs51-ld = { workspace = true }

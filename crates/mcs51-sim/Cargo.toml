@@ -1,0 +1,19 @@
+[package]
+name = "mcs51-sim"
+description = "8051 system simulator: Timer0/1, UART and ports on top of the i8051 CPU emulator"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-ihex = { workspace = true }
+i8051 = { workspace = true }
+
+[dev-dependencies]
+# 端口位操作的回归测试要先自己拼一段固件出来。
+mcs51-asm = { workspace = true }
+mcs51-ld = { workspace = true }

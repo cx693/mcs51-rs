@@ -1,0 +1,32 @@
+# ===========================================================================
+#  mcs51-rs 工程配置 —— 流水灯（裸机版）
+#
+#  目标芯片：STC89C52RC（8KB Flash / 512B RAM / 内置 BSL）
+#  编译方式：mcs51 build examples/led-flow
+#  下载方式：mcs51 flash examples/led-flow -p /dev/ttyUSB0 -r dtr
+# ===========================================================================
+
+[project]
+name = "led-flow"
+device = "STC89C52RC"
+description = "P3.5/P3.6/P3.7 三路流水灯（纯裸机）"
+
+[build]
+sources = ["src/main.asm"]
+out = "build"
+listing = true          # 生成 .lst 清单，方便对照每条指令的机器码
+map = true              # 生成 .map 符号表
+
+[sim]
+instructions = 400000
+cpu_hz = 11059200
+
+[flash]
+# 板子参数写在这里，之后一条 mcs51 flash 就能下载，不用每次敲 -p
+# port = "/dev/ttyUSB0"     ; Windows 上是 COM3 这类名字，可用 mcs51 devices 查看
+protocol = "stc89"          # STC89/90 系列用 stc89（无校验位、1 字节包校验和）
+baud = 115200               # 传输波特率；线路不稳就降到 57600 或 19200
+handshake_baud = 2400        # 握手波特率，BSL 只在这个速率上监听，不要改
+reset = "manual"            # manual=手动断电重上电；接好 DTR→RST 电容后可改 "dtr"
+flash_size = 8192           # STC89C52RC 是 8KB Flash，超过会被提前拒绝
+write_options = true        # 写完程序后把选项(熔丝)字节写回原值

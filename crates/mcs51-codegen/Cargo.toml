@@ -1,0 +1,17 @@
+[package]
+name = "mcs51-codegen"
+description = "Write 8051 firmware in Rust: a type-safe generator that emits MCS-51 machine code at build time"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-asm = { workspace = true }
+mcs51-ld = { workspace = true }
+mcs51-ihex = { workspace = true }
+mcs51-sim = { workspace = true }
+mcs51-chips = { workspace = true }

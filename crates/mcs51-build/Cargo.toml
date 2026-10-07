@@ -1,0 +1,26 @@
+[package]
+name = "mcs51-build"
+description = "mcs51-rs build driver: project manifest, assemble, link, package and simulate 8051 firmware"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "mcs51"
+path = "src/main.rs"
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-asm = { workspace = true }
+mcs51-ld = { workspace = true }
+mcs51-ihex = { workspace = true }
+mcs51-sim = { workspace = true }
+mcs51-flash = { workspace = true }
+
+[dev-dependencies]
+# A real TOML parser, used only by tests: every `.toml` we ship must be valid
+# TOML, not just valid to our own hand-written subset parser.
+toml = "0.9"

@@ -1,0 +1,13 @@
+[package]
+name = "mcs51-ihex"
+description = "Intel HEX and raw binary firmware images (the packihx/makebin of the mcs51-rs toolchain)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+
+[dev-dependencies]

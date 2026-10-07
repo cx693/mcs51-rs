@@ -1,0 +1,22 @@
+[package]
+name = "led-flow-rs"
+description = "流水灯，用 Rust 编写（mcs51-codegen eDSL 示例）"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+mcs51-codegen = { workspace = true }
+mcs51-chips = { workspace = true }
+
+[dev-dependencies]
+# 行为测试直接跑真实产物（build/*.ihx），所以需要 HEX 解析和模拟器。
+mcs51-ihex = { workspace = true }
+mcs51-sim = { workspace = true }
+
+# 应用入口就是 src/main.rs（Cargo 默认约定），不需要 lib.rs。
+[[bin]]
+name = "led-flow-rs"
+path = "src/main.rs"

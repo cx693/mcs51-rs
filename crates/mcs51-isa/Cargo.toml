@@ -1,0 +1,16 @@
+[package]
+name = "mcs51-isa"
+description = "Intel MCS-51 (8051) instruction set: opcode table, encoder, decoder, SFRs and memory model"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+
+[dev-dependencies]
+# The opcode table is cross-checked exhaustively against this emulator; see
+# `tests/oracle.rs`.
+i8051 = { workspace = true }

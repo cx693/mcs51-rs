@@ -1,0 +1,29 @@
+[workspace]
+resolver = "3"
+members = ["crates/*", "examples/led-flow-rs", "examples/blink-rs"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/YOUR-USERNAME/mcs51-rs"
+authors = ["mcs51-rs contributors"]
+
+[workspace.dependencies]
+mcs51-isa = { path = "crates/mcs51-isa", version = "0.1.0" }
+mcs51-asm = { path = "crates/mcs51-asm", version = "0.1.0" }
+mcs51-ld = { path = "crates/mcs51-ld", version = "0.1.0" }
+mcs51-ihex = { path = "crates/mcs51-ihex", version = "0.1.0" }
+mcs51-sim = { path = "crates/mcs51-sim", version = "0.1.0" }
+mcs51-flash = { path = "crates/mcs51-flash", version = "0.1.0" }
+mcs51-codegen = { path = "crates/mcs51-codegen", version = "0.1.0" }
+mcs51-chips = { path = "crates/mcs51-chips", version = "0.1.0" }
+i8051 = "0.25"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[profile.test]
+opt-level = 1

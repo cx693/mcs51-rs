@@ -1,0 +1,14 @@
+[package]
+name = "mcs51-ld"
+description = "8051 linker: places sections, resolves symbols, applies relocations (the sdld of the mcs51-rs toolchain)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[dependencies]
+mcs51-isa = { workspace = true }
+mcs51-asm = { workspace = true }
+mcs51-ihex = { workspace = true }

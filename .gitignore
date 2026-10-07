@@ -1,0 +1,17 @@
+# 构建产物
+/target/
+/.cargo/
+/.cargo-home/
+build/
+
+# 生成的目标机产物
+*.ihx
+*.bin
+*.lst
+*.map
+*.o51
+*.rel
+
+# 编辑器和操作系统
+.DS_Store
+*.swp

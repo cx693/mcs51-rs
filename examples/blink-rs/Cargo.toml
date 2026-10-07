@@ -1,0 +1,17 @@
+[package]
+name = "blink-rs"
+description = "裸机 blink + 串口报数，用 mcs51-codegen 的 HAL 写（对照 examples/blink 的汇编版）"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+mcs51-codegen = { workspace = true }
+mcs51-chips = { workspace = true }
+
+[dev-dependencies]
+# 行为测试直接在模拟器里跑生成的固件。
+mcs51-ihex = { workspace = true }
+mcs51-sim = { workspace = true }

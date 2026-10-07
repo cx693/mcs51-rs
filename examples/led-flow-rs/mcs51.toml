@@ -1,0 +1,42 @@
+# ===========================================================================
+#  mcs51-rs 工程配置 —— 流水灯（Rust 裸机版）
+#
+#  这个工程的应用代码是 src/main.rs（Rust）加若干模块，不是 .asm。
+#  Rust 程序在构建期生成 8051 机器码，再交给本仓库的汇编器/链接器。
+#
+#  构建： mcs51 build examples/led-flow-rs
+#  下载： mcs51 flash examples/led-flow-rs -p /dev/ttyUSB0 -r dtr
+# ===========================================================================
+
+[project]
+name = "led-flow-rs"   # 必须和生成器写出的产物名一致
+device = "STC89C52RC"
+description = "P3.5/P3.6 流水灯 + P3.7 Timer 0 呼吸灯，纯裸机（mcs51-codegen）"
+
+[build]
+# language = "rust" 表示：应用由 Rust 生成，构建时执行 cargo run。
+# 也可以把这里换成 sources = ["src/main.asm"] 切回汇编，两种方式可以混用。
+language = "rust"
+# rust_bin 留空 = 用 src/main.rs（Cargo 的默认二进制）。
+rust_bin = ""
+out = "build"
+listing = true
+map = true
+
+# 应用代码全在 Rust 里，所以这里不需要 sources；
+# 板级参数（晶振/时基/PWM/引脚）在 src/board.rs 里用 Rust 写。
+
+[sim]
+instructions = 4000000
+# 模拟器按这个频率算机器周期。和 src/board.rs 的 CRYSTAL_HZ 保持一致。
+cpu_hz = 11059200
+uart_baud = 9600
+
+[flash]
+# port = "/dev/ttyUSB0"
+protocol = "stc89"
+baud = 115200
+handshake_baud = 2400
+reset = "manual"
+flash_size = 8192
+write_options = true
